@@ -14,8 +14,9 @@ namespace GUI
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            CargarProductos();
             CargarMenuVertical();
+            string Nombre= Request.QueryString["NombreProducto"]?.ToString();
+            CargarProductos(Nombre);
             
         }
 
@@ -44,29 +45,31 @@ namespace GUI
             this.contenedorMenu.Controls.Add(DivContenedor);
         }
 
-        protected void CargarProductos()
+        protected void CargarProductos(string nombre)
         {
-            HtmlGenericControl DivContenedor = new HtmlGenericControl("div");
-
-            DivContenedor.InnerHtml = $"<div>";
-            int cont = 0;
-            foreach (var item in GestorProducto.ListarProdCuerdas())
+            if (string.IsNullOrEmpty(nombre))
             {
-                if (cont == 0)
-                    DivContenedor.InnerHtml += "<div clas='row'>";
-                if (cont < 3)
+                HtmlGenericControl DivContenedor = new HtmlGenericControl("div");
+                DivContenedor.InnerHtml = $"<div>";
+                int cont = 0;
+                foreach (var item in GestorProducto.ListarProdCuerdas())
                 {
-                    DivContenedor.InnerHtml += CrearCardProducto(item.Nombre, item.Modelo, item.Precio.ToString(), item.Descripcion, GestorProducto.GestionImagen(item.Nombre, "sin categoria"));
+                    if (cont == 0)
+                        DivContenedor.InnerHtml += "<div clas='row'>";
+                    if (cont < 3)
+                    {
+                        DivContenedor.InnerHtml += CrearCardProducto(item.Nombre, item.Modelo, item.Precio.ToString(), item.Descripcion, GestorProducto.GestionImagen(item.Nombre, "sin categoria"));
+                    }
+                    else
+                    {
+                        DivContenedor.InnerHtml += CrearCardProducto(item.Nombre, item.Modelo, item.Precio.ToString(), item.Descripcion, GestorProducto.GestionImagen(item.Nombre, "sin categoria")) + "</div>";
+                        cont = 0;
+                    }
+                    cont++;
                 }
-                else
-                {
-                    DivContenedor.InnerHtml += CrearCardProducto(item.Nombre, item.Modelo, item.Precio.ToString(), item.Descripcion, GestorProducto.GestionImagen(item.Nombre, "sin categoria")) + "</div>";
-                    cont = 0;
-                }
-                cont++;
+                DivContenedor.InnerHtml += "</div>";
+                this.contenedor.Controls.Add(DivContenedor);
             }
-            DivContenedor.InnerHtml += "</div>";
-            this.contenedor.Controls.Add(DivContenedor);
         }
 
         public string CrearCardProducto(string NombreProducto,

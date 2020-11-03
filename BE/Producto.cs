@@ -19,4 +19,7 @@ namespace BE
         public string Estado { get; set; }
         public string Precio { get; set; }
     }
+    
+
+
 }

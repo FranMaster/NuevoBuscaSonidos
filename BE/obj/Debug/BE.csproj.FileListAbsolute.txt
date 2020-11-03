@@ -4,3 +4,9 @@ C:\Users\romina\source\repos\BuscaTuSonido\BE\obj\Debug\BE.csprojAssemblyReferen
 C:\Users\romina\source\repos\BuscaTuSonido\BE\obj\Debug\BE.csproj.CoreCompileInputs.cache
 C:\Users\romina\source\repos\BuscaTuSonido\BE\obj\Debug\BE.dll
 C:\Users\romina\source\repos\BuscaTuSonido\BE\obj\Debug\BE.pdb
+C:\Users\A308610\Desktop\reposBp\BuscaTuSonido2\BE\bin\Debug\BE.dll
+C:\Users\A308610\Desktop\reposBp\BuscaTuSonido2\BE\bin\Debug\BE.pdb
+C:\Users\A308610\Desktop\reposBp\BuscaTuSonido2\BE\obj\Debug\BE.csprojAssemblyReference.cache
+C:\Users\A308610\Desktop\reposBp\BuscaTuSonido2\BE\obj\Debug\BE.csproj.CoreCompileInputs.cache
+C:\Users\A308610\Desktop\reposBp\BuscaTuSonido2\BE\obj\Debug\BE.dll
+C:\Users\A308610\Desktop\reposBp\BuscaTuSonido2\BE\obj\Debug\BE.pdb
