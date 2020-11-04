@@ -47,12 +47,12 @@ namespace GUI
 
         protected void CargarProductos(string nombre)
         {
-            if (string.IsNullOrEmpty(nombre))
+            if (nombre!=null)
             {
                 HtmlGenericControl DivContenedor = new HtmlGenericControl("div");
                 DivContenedor.InnerHtml = $"<div>";
                 int cont = 0;
-                foreach (var item in GestorProducto.ListarProdCuerdas())
+                foreach (var item in GestorProducto.ListarProdElectronicos(nombre))
                 {
                     if (cont == 0)
                         DivContenedor.InnerHtml += "<div clas='row'>";
@@ -79,11 +79,11 @@ namespace GUI
                                           string urlImagen)
         {
             return
-            $"<div class='col-md-4 col-sm-4'><div class='card'><a href='#'><img class='card-img-top' " +
+            $"<div class='col-md-3 col-sm-3'><div class='card'><a href='#'><img class='card-img-top' " +
             $"src='{urlImagen}' alt='' /></a><div class='card-body'><h4 class='card-title'>" +
             $"<a href='DescripcionProducto.aspx?Nombre={NombreProducto}&Modelo={Modelo}'>{NombreProducto}</a></h4><h5>${PrecioProducto}</h5><p class='card-text'>" +
             $"{Descripcion}</p></div><div class='card-footer'>" + 
-            $"<input type='checkbox' id='ck' name='producto' value={NombreProducto} onclick='Comparar_Click'> " +
+            $"<input type='checkbox' class='ck' name='producto' value='{NombreProducto}' onChange='addComparacion(this.value);'/> " +
             $"<label for ='producto'> Comparar producto</label></div></div></div>";
 
         }
@@ -92,7 +92,7 @@ namespace GUI
         public string CrearMenuVertical(string Nombre)
         {
             return
-            $"<div class='list-group'><a id='{Nombre}' href='/CatalogoProductos' class='list - group - item' >{Nombre}</a></div>";
+            $"<div class='list-group'><a id='{Nombre}' href='/CatalogoProductos?NombreProducto={Nombre}' class='list - group - item' >{Nombre}</a></div>";
 
         }
 
